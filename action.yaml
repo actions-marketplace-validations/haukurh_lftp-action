@@ -48,4 +48,4 @@ inputs:
     type: string
 runs:
   using: "docker"
-  image: "ghcr.io/haukurh/lftp-action-image:1.0.0"
+  image: "docker://ghcr.io/haukurh/lftp-action-image:1.0.0"
