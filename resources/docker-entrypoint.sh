@@ -54,7 +54,7 @@ LFTP_OPTIONS="set ssl:verify-certificate ${SSL_VERIFY_CERT}; ${LFTP_OPTIONS}"
 
 if [ -n "${LFTP_PASSWORD}" ]; then
 	[ "${INPUT_DEBUG}" = 'true' ] && set -x
-	lftp -d --norc -u "${FTP_USER}" --env-password -p "${FTP_PORT}" -e "${LFTP_OPTIONS} ${INPUT_COMMANDS}; bye" "${FTP_PROTOCOL}://${INPUT_FTP_HOST}"
+	lftp --norc -u "${FTP_USER}" --env-password -p "${FTP_PORT}" -e "${LFTP_OPTIONS} ${INPUT_COMMANDS}; bye" "${FTP_PROTOCOL}://${INPUT_FTP_HOST}"
 else
 	[ "${INPUT_DEBUG}" = 'true' ] && set -x
 	lftp --norc -u "${FTP_USER}" -p "${FTP_PORT}" -e "${LFTP_OPTIONS} ${INPUT_COMMANDS}; bye" "${FTP_PROTOCOL}://${INPUT_FTP_HOST}"
