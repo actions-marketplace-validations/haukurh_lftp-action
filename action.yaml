@@ -1,0 +1,51 @@
+name: "lftp sync"
+description: "A simple action that allows you to use LFTP securely in a GitHub workflow"
+branding:
+  icon: "upload-cloud"
+  color: "orange"
+inputs:
+  ftp-host:
+    required: true
+    type: string
+  ftp-protocol:
+    required: false
+    default: "sftp"
+    type: string
+  ftp-user:
+    required: false
+    default: "anonymous"
+    type: string
+  ftp-pass:
+    required: false
+    type: string
+  ftp-port:
+    required: false
+    default: "22"
+    type: string
+  ssh-private-key:
+    required: false
+    type: string
+  ftp-host-fingerprint:
+    required: false
+    type: string
+  disable-strict-host-key-checking:
+    required: false
+    type: string
+  force-ssl:
+    required: false
+    default: "false"
+    type: string
+  ssl-verify-cert:
+    required: false
+    default: "false"
+    type: string
+  commands:
+    required: false
+    type: string
+  debug:
+    required: false
+    default: "false"
+    type: string
+runs:
+  using: "docker"
+  image: "Dockerfile"
