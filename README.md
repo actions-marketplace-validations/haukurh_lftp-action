@@ -7,16 +7,16 @@ Useful to deploy code to a server over SFTP.
 
 | Name                             | Description                                                                                                             | Required | Default   |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------|-----------|
-| ftp-host                         | The hostname to connect to                                                                                              | yes      | N/A       |
-| ftp-user                         | FTP username                                                                                                            | no       | anonymous |
-| ftp-pass                         | FTP password if required                                                                                                | no       | N/A       |
-| ftp-port                         | FTP port                                                                                                                | no       | 22        |
-| ssh-private-key                  | SSH private key which will be used when connecting over SFTP                                                            | no       | N/A       |
-| ftp-protocol                     | What protocol to use; `sftp`, `ftp`                                                                                     | no       | sftp      |
-| ftp-host-fingerprint             | The SSH host fingerprint to verify when connecting                                                                      | no       | N/A       |
-| disable-strict-host-key-checking | Disable `StrictHostKeyChecking` (not recommended)                                                                       | no       | false     |
-| force-ssl                        | if true, refuse to send password in clear when server does not support SSL                                              | no       | true      |
-| ssl-verify-cert                  | when true, `lftp` checks if the host name used to connect to the server corresponds to the host name in its certificate | no       | true      |
+| ftp_host                         | The hostname to connect to                                                                                              | yes      | N/A       |
+| ftp_user                         | FTP username                                                                                                            | no       | anonymous |
+| ftp_pass                         | FTP password if required                                                                                                | no       | N/A       |
+| ftp_port                         | FTP port                                                                                                                | no       | 22        |
+| ssh_private_key                  | SSH private key which will be used when connecting over SFTP                                                            | no       | N/A       |
+| ftp_protocol                     | What protocol to use; `sftp`, `ftp`                                                                                     | no       | sftp      |
+| ftp_host_fingerprint             | The SSH host fingerprint to verify when connecting                                                                      | no       | N/A       |
+| disable_strict_host_key_checking | Disable `StrictHostKeyChecking` (not recommended)                                                                       | no       | false     |
+| force_ssl                        | if true, refuse to send password in clear when server does not support SSL                                              | no       | true      |
+| ssl_verify_cert                  | when true, `lftp` checks if the host name used to connect to the server corresponds to the host name in its certificate | no       | true      |
 | commands                         | All commands for `lftp` seperated with `;`                                                                              | no       | ''        |
 | debug                            | Turn on debug mode                                                                                                      | no       | false     |
 
@@ -41,10 +41,10 @@ jobs:
       - name: Deploy files via SFTP
         uses: haukurh/lftp-action@v1
         with:
-          ftp-host: ${{ vars.FTP_HOST }}
-          ftp-user: ${{ vars.FTP_USER }}
-          ftp-pass: ${{ secrets.FTP_PASS }}
-          ftp-host-fingerprint: ${{ vars.FTP_HOST_FINGERPRINT }}
+          ftp_host: ${{ vars.FTP_HOST }}
+          ftp_user: ${{ vars.FTP_USER }}
+          ftp_pass: ${{ secrets.FTP_PASS }}
+          ftp_host_fingerprint: ${{ vars.FTP_HOST_FINGERPRINT }}
           commands: mirror --continue --reverse --delete --verbose app/ /remote/www/site/
 ```
 
@@ -78,10 +78,10 @@ jobs:
       - name: Deploy files via SFTP
         uses: haukurh/lftp-action@v1
         with:
-          ftp-host: ${{ vars.FTP_HOST }}
-          ftp-user: ${{ vars.FTP_USER }}
-          ftp-pass: ${{ secrets.FTP_PASS }}
-          ftp-host-fingerprint: ${{ vars.FTP_HOST_FINGERPRINT }}
+          ftp_host: ${{ vars.FTP_HOST }}
+          ftp_user: ${{ vars.FTP_USER }}
+          ftp_pass: ${{ secrets.FTP_PASS }}
+          ftp_host_fingerprint: ${{ vars.FTP_HOST_FINGERPRINT }}
           commands: mirror --continue --reverse --delete --verbose app/ /remote/www/site/
 ```
 
@@ -108,10 +108,10 @@ jobs:
       - name: Deploy files via SFTP
         uses: haukurh/lftp-action@v1
         with:
-          ftp-host: ${{ vars.FTP_HOST }}
-          ftp-user: ${{ vars.FTP_USER }}
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ftp-host-fingerprint: ${{ vars.FTP_HOST_FINGERPRINT }}
+          ftp_host: ${{ vars.FTP_HOST }}
+          ftp_user: ${{ vars.FTP_USER }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ftp_host_fingerprint: ${{ vars.FTP_HOST_FINGERPRINT }}
           commands: mirror --continue --reverse --delete --verbose app/ /remote/www/site/
 ```
 
@@ -138,10 +138,10 @@ jobs:
       - name: Deploy files via SFTP
         uses: haukurh/lftp-action@v1
         with:
-          ftp-host: ${{ vars.FTP_HOST }}
-          ftp-user: ${{ vars.FTP_USER }}
-          ftp-pass: ${{ secrets.FTP_PASS }}
-          disable-strict-host-key-checking: "true"
+          ftp_host: ${{ vars.FTP_HOST }}
+          ftp_user: ${{ vars.FTP_USER }}
+          ftp_pass: ${{ secrets.FTP_PASS }}
+          disable_strict_host_key_checking: "true"
           commands: mirror --continue --reverse --delete --verbose app/ /remote/www/site/
 ```
 
