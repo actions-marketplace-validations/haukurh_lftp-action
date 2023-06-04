@@ -6,46 +6,47 @@ branding:
 inputs:
   ftp_host:
     required: true
-    type: string
+    description: "The hostname to connect to"
   ftp_protocol:
     required: false
     default: "sftp"
-    type: string
+    description: "What protocol to use; sftp, ftp"
   ftp_user:
     required: false
     default: "anonymous"
-    type: string
+    description: "FTP username"
   ftp_pass:
     required: false
-    type: string
+    description: "FTP password if required"
   ftp_port:
     required: false
     default: "22"
-    type: string
+    description: "FTP port"
   ssh_private_key:
     required: false
-    type: string
+    description: "SSH private key which will be used when connecting over SFTP"
   ftp_host_fingerprint:
     required: false
-    type: string
+    description: "The SSH host fingerprint to verify when connecting"
   disable_strict_host_key_checking:
     required: false
-    type: string
+    default: "false"
+    description: "Disable StrictHostKeyChecking (not recommended)"
   force_ssl:
     required: false
-    default: "false"
-    type: string
+    default: "true"
+    description: "if true, refuse to send password in clear when server does not support SSL"
   ssl_verify_cert:
     required: false
     default: "false"
-    type: string
+    description: "when true, lftp checks if the host name used to connect to the server corresponds to the hostname in its certificate"
   commands:
     required: false
-    type: string
+    description: "All commands for lftp seperated with ;"
   debug:
     required: false
     default: "false"
-    type: string
+    description: "Turn on debug mode"
 runs:
   using: "docker"
   image: "docker://ghcr.io/haukurh/lftp-action-image:1.0.0"
